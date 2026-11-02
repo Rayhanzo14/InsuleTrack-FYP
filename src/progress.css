@@ -1,0 +1,491 @@
+/* ============================================================
+   PROGRESS PAGE
+   ============================================================ */
+
+/* ── Title + Range Row ───────────────────────────────────── */
+.prog-title-row {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 14px;
+}
+
+.range-tabs {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    background: #fff;
+    border-radius: 10px;
+    padding: 8px 12px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.range-tab-icon {
+    font-size: 15px;
+}
+
+.range-tab {
+    padding: 6px 14px;
+    border-radius: 6px;
+    border: none;
+    background: none;
+    font-size: 13px;
+    font-weight: 500;
+    font-family: 'Inter', sans-serif;
+    color: #6B7280;
+    cursor: pointer;
+    transition: background 0.15s, color 0.15s;
+}
+
+.range-tab:hover {
+    background: #F3F4F6;
+    color: #374151;
+}
+
+.range-tab.active {
+    background: linear-gradient(135deg, #10B981, #059669);
+    color: #fff;
+    box-shadow: 0 3px 10px rgba(16, 185, 129, 0.3);
+}
+
+/* ── Two-column progress layout ──────────────────── */
+.prog-layout {
+    display: grid;
+    grid-template-columns: 1fr 320px;
+    gap: 24px;
+    align-items: start;
+}
+
+@media (max-width: 1100px) {
+    .prog-layout {
+        grid-template-columns: 1fr;
+    }
+
+    .prog-right {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 16px;
+    }
+}
+
+@media (max-width: 640px) {
+    .prog-right {
+        grid-template-columns: 1fr;
+    }
+}
+
+.prog-left {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.prog-right {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+/* ── Card header row ──────────────────────────── */
+.prog-card-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 16px;
+}
+
+/* When chart-sub sits inside the card header,
+   strip its bottom margin so the chart starts immediately below the header */
+.prog-card-header .chart-sub {
+    margin-bottom: 0;
+}
+
+.prog-card-icon {
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    flex-shrink: 0;
+}
+
+.prog-card-icon.blood {
+    background: #FEF2F2;
+}
+
+.prog-card-icon.body {
+    background: #F5F3FF;
+}
+
+.prog-card-icon.activity {
+    background: #EFF6FF;
+}
+
+/* ── Blood Sugar Summary ─────────────────────────────────── */
+.bs-summary-row {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+    margin-top: 16px;
+}
+
+.bs-summary-item {
+    background: #F9FAFB;
+    border-radius: 10px;
+    padding: 12px 14px;
+}
+
+.bs-summary-val {
+    font-size: 20px;
+    font-weight: 700;
+    color: #1a1a2e;
+    line-height: 1;
+}
+
+.bs-summary-val span {
+    font-size: 12px;
+    color: #6B7280;
+    font-weight: 400;
+}
+
+.bs-summary-label {
+    font-size: 11px;
+    color: #9CA3AF;
+    margin: 4px 0;
+}
+
+.bs-badge {
+    display: inline-block;
+    font-size: 10px;
+    font-weight: 600;
+    padding: 2px 8px;
+    border-radius: 20px;
+}
+
+.bs-badge.normal {
+    background: #D1FAE5;
+    color: #059669;
+}
+
+.bs-badge.high {
+    background: #FEE2E2;
+    color: #DC2626;
+}
+
+.bs-badge.low {
+    background: #DBEAFE;
+    color: #2563EB;
+}
+
+.bs-insight {
+    margin-top: 14px;
+    padding: 10px 14px;
+    background: #ECFDF5;
+    border: 1.5px solid #A7F3D0;
+    border-radius: 8px;
+    font-size: 12.5px;
+    color: #065F46;
+}
+
+/* ── Weight / Activity insight ───────────────────────────── */
+.weight-insight,
+.act-insight {
+    margin-top: 12px;
+    padding: 10px 14px;
+    background: #F5F3FF;
+    border: 1.5px solid #DDD6FE;
+    border-radius: 8px;
+    font-size: 12.5px;
+    color: #4C1D95;
+    line-height: 1.5;
+}
+
+.act-insight {
+    background: #EFF6FF;
+    border-color: #BFDBFE;
+    color: #1E3A5F;
+}
+
+/* ── Custom Chart Tooltip ────────────────────────────────── */
+.chart-tooltip {
+    background: #fff;
+    border: 1px solid #E5E7EB;
+    border-radius: 8px;
+    padding: 10px 14px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.tooltip-label {
+    font-size: 12px;
+    font-weight: 600;
+    color: #374151;
+    margin-bottom: 4px;
+}
+
+/* ── Key Metrics Card ────────────────────────────────────── */
+.key-metrics-card {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+}
+
+.metric-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 14px 0;
+    border-bottom: 1px solid #F3F4F6;
+}
+
+.metric-item:last-child {
+    border-bottom: none;
+}
+
+.metric-icon {
+    width: 36px;
+    height: 36px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 17px;
+    flex-shrink: 0;
+}
+
+.metric-icon.blue {
+    background: #EFF6FF;
+}
+
+.metric-icon.green {
+    background: #ECFDF5;
+}
+
+.metric-icon.purple {
+    background: #F5F3FF;
+}
+
+.metric-icon.orange {
+    background: #FFFBEB;
+}
+
+.metric-label {
+    font-size: 11px;
+    color: #9CA3AF;
+    margin-bottom: 3px;
+}
+
+.metric-val {
+    font-size: 22px;
+    font-weight: 700;
+    color: #1a1a2e;
+    line-height: 1;
+}
+
+.metric-val span {
+    font-size: 12px;
+    color: #6B7280;
+    font-weight: 400;
+}
+
+.metric-val.improvement {
+    color: #10B981;
+    font-size: 16px;
+}
+
+.metric-val.worsening {
+    color: #EF4444;
+    font-size: 16px;
+}
+
+/* ── Health Tip Card ─────────────────────────────────────── */
+.health-tip-card {
+    background: linear-gradient(135deg, #10B981 0%, #059669 100%);
+    border-radius: 14px;
+    padding: 20px;
+    color: #fff;
+    box-shadow: 0 6px 20px rgba(16, 185, 129, 0.3);
+}
+
+.health-tip-title {
+    font-size: 14px;
+    font-weight: 700;
+    margin-bottom: 10px;
+}
+
+.health-tip-body {
+    font-size: 13px;
+    line-height: 1.6;
+    opacity: 0.95;
+}
+
+/* ============================================================
+   FOOD LOGGING CONSISTENCY CARD
+   ============================================================ */
+
+.food-consistency-card {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    padding: 20px 22px;
+}
+
+/* ── Row: one per meal type ───────────────────────────────── */
+.food-consistency-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-bottom: 14px;
+}
+
+.food-consistency-row {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.food-consistency-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.food-consistency-label {
+    font-size: 12.5px;
+    font-weight: 600;
+    color: #374151;
+}
+
+.food-consistency-count {
+    font-size: 11px;
+    color: #9CA3AF;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.food-consistency-pct {
+    font-size: 12px;
+    font-weight: 700;
+    min-width: 32px;
+    text-align: right;
+}
+
+/* ── Animated progress bar ────────────────────────────────── */
+.food-consistency-track {
+    height: 7px;
+    background: #F3F4F6;
+    border-radius: 999px;
+    overflow: hidden;
+}
+
+.food-consistency-fill {
+    height: 100%;
+    border-radius: 999px;
+    transition: width 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+    min-width: 3px;
+}
+
+/* ── Insight banner ───────────────────────────────────────── */
+.food-consistency-insight {
+    font-size: 12px;
+    color: #374151;
+    background: #FFF7ED;
+    border: 1.5px solid #FED7AA;
+    border-radius: 8px;
+    padding: 9px 12px;
+    line-height: 1.5;
+}
+
+/* ============================================================
+   MEAL LOGGING HEATMAP
+   ============================================================ */
+
+.heatmap-weekdays {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 3px;
+    margin-bottom: 4px;
+}
+
+.heatmap-weekdays span {
+    text-align: center;
+    font-size: 10px;
+    font-weight: 600;
+    color: #9CA3AF;
+}
+
+.heatmap-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 3px;
+}
+
+.heatmap-cell {
+    aspect-ratio: 1;
+    border-radius: 4px;
+    cursor: default;
+    transition: transform 0.12s ease, box-shadow 0.12s ease;
+}
+
+.heatmap-cell:hover {
+    transform: scale(1.35);
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+    z-index: 1;
+}
+
+.heatmap-legend {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    margin-top: 10px;
+    justify-content: flex-end;
+}
+
+.heatmap-legend-label {
+    font-size: 10px;
+    color: #9CA3AF;
+}
+
+/* ============================================================
+   MEAL DISTRIBUTION DONUT
+   ============================================================ */
+
+.meal-donut-wrap {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.meal-donut-legend {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    flex: 1;
+}
+
+.meal-donut-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.meal-donut-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    flex-shrink: 0;
+}
+
+.meal-donut-name {
+    font-size: 12px;
+    color: #374151;
+    flex: 1;
+}
+
+.meal-donut-val {
+    font-size: 12px;
+    font-weight: 700;
+}

@@ -1,0 +1,510 @@
+/* ============================================================
+   RECORD DATA PAGE
+   ============================================================ */
+
+.record-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    max-width: 860px;
+}
+
+/* ── Record Card (each section) ─────────────────────── */
+.rec-card {
+    background: #fff;
+    border-radius: 14px;
+    padding: 26px 28px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+/* ── Section Header ─────────────────────────────────── */
+.rec-section-header {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid #F3F4F6;
+}
+
+.rec-section-icon {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    flex-shrink: 0;
+}
+
+.rec-section-icon.blood {
+    background: #FEF2F2;
+}
+
+.rec-section-icon.food {
+    background: #ECFDF5;
+}
+
+.rec-section-icon.activity {
+    background: #EFF6FF;
+}
+
+.rec-section-icon.body {
+    background: #F5F3FF;
+}
+
+.rec-section-title {
+    font-size: 15px;
+    font-weight: 700;
+    color: #1a1a2e;
+}
+
+.rec-section-sub {
+    font-size: 12px;
+    color: #9CA3AF;
+    margin-top: 2px;
+}
+
+/* ── Grids ──────────────────────────────────────────── */
+.rec-grid-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 18px;
+}
+
+.rec-grid-1 {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 16px;
+}
+
+@media (max-width: 640px) {
+    .rec-grid-2 {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* ── Field ──────────────────────────────────────────── */
+.rec-field-group {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.rec-label {
+    font-size: 13px;
+    font-weight: 600;
+    color: #1a1a2e;
+}
+
+.rec-input {
+    width: 100%;
+    padding: 11px 14px;
+    border: 1.5px solid #E5E7EB;
+    border-radius: 8px;
+    font-size: 14px;
+    font-family: 'Inter', sans-serif;
+    color: #374151;
+    background: #fff;
+    outline: none;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.rec-input::placeholder {
+    color: #C4C9D4;
+}
+
+.rec-input:focus {
+    border-color: #10B981;
+    box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.1);
+}
+
+.rec-select {
+    appearance: none;
+    cursor: pointer;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3E%3Cpath stroke='%239CA3AF' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 12px center;
+    background-size: 18px;
+    padding-right: 36px;
+}
+
+.rec-textarea {
+    resize: vertical;
+    min-height: 90px;
+    line-height: 1.5;
+}
+
+.rec-hint {
+    font-size: 11.5px;
+    color: #9CA3AF;
+    line-height: 1.4;
+}
+
+/* ── Tip Box ─────────────────────────────────────────── */
+.rec-tip {
+    background: #ECFDF5;
+    border: 1.5px solid #A7F3D0;
+    border-radius: 8px;
+    padding: 11px 14px;
+    font-size: 12.5px;
+    color: #065F46;
+    line-height: 1.5;
+}
+
+/* ── Food API Banner ─────────────────────────────────── */
+.food-api-banner {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    background: linear-gradient(135deg, #EFF6FF 0%, #F0FDF4 100%);
+    border: 1.5px solid #BFDBFE;
+    border-radius: 10px;
+    padding: 12px 16px;
+    font-size: 12.5px;
+    color: #1E40AF;
+    line-height: 1.5;
+}
+
+.food-api-icon {
+    font-size: 18px;
+    flex-shrink: 0;
+    margin-top: 1px;
+}
+
+.food-api-banner a {
+    color: #10B981;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.food-api-banner a:hover {
+    text-decoration: underline;
+}
+
+/* ── Food Search Widget ───────────────────────────────── */
+.food-search-wrap {
+    position: relative;
+    width: 100%;
+}
+
+.food-search-input-row {
+    display: flex;
+    align-items: center;
+    gap: 0;
+    background: #F8FAFC;
+    border: 1.5px solid #D1FAE5;
+    border-radius: 8px;
+    overflow: hidden;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.food-search-input-row:focus-within {
+    border-color: #10B981;
+    box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.12);
+}
+
+.food-search-icon {
+    padding: 0 10px 0 12px;
+    font-size: 14px;
+    color: #9CA3AF;
+    flex-shrink: 0;
+}
+
+.food-search-input {
+    flex: 1;
+    padding: 10px 10px 10px 0;
+    border: none;
+    background: transparent;
+    font-size: 13.5px;
+    font-family: 'Inter', sans-serif;
+    color: #374151;
+    outline: none;
+}
+
+.food-search-input::placeholder {
+    color: #B0BAC9;
+}
+
+.food-search-spinner {
+    width: 16px;
+    height: 16px;
+    border: 2px solid #D1FAE5;
+    border-top-color: #10B981;
+    border-radius: 50%;
+    animation: spin 0.6s linear infinite;
+    flex-shrink: 0;
+    margin-right: 12px;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+/* ── Dropdown ────────────────────────────────────────── */
+.food-search-dropdown {
+    position: absolute;
+    top: calc(100% + 4px);
+    left: 0;
+    right: 0;
+    background: #fff;
+    border: 1.5px solid #E5E7EB;
+    border-radius: 10px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.10);
+    list-style: none;
+    margin: 0;
+    padding: 4px 0;
+    z-index: 200;
+    max-height: 280px;
+    overflow-y: auto;
+}
+
+.food-search-item {
+    padding: 10px 14px;
+    cursor: pointer;
+    transition: background 0.15s;
+    border-bottom: 1px solid #F9FAFB;
+}
+
+.food-search-item:hover {
+    background: #F0FDF4;
+}
+
+.food-item-name {
+    font-size: 13.5px;
+    font-weight: 600;
+    color: #1a1a2e;
+    margin-bottom: 5px;
+    line-height: 1.3;
+}
+
+.food-item-brand {
+    font-weight: 400;
+    color: #9CA3AF;
+    font-size: 12px;
+}
+
+.food-item-macros {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+}
+
+.food-search-credit {
+    padding: 7px 14px;
+    font-size: 11px;
+    color: #9CA3AF;
+    text-align: right;
+    border-top: 1px solid #F3F4F6;
+}
+
+.food-search-credit a {
+    color: #10B981;
+    text-decoration: none;
+}
+
+.food-search-credit a:hover {
+    text-decoration: underline;
+}
+
+/* ── Dropdown section header (Local MY) ─────────────────── */
+.food-search-section-header {
+    padding: 6px 14px;
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: #065F46;
+    background: #F0FDF4;
+    border-bottom: 1px solid #D1FAE5;
+}
+
+/* ── Source tag badge ────────────────────────────────────── */
+.food-source-tag {
+    display: inline-flex;
+    align-items: center;
+    font-size: 10px;
+    font-weight: 700;
+    padding: 1px 6px;
+    border-radius: 20px;
+    margin-left: 6px;
+    vertical-align: middle;
+}
+
+.food-source-tag.local {
+    background: #DCFCE7;
+    color: #166534;
+}
+
+.food-source-tag.api {
+    background: #DBEAFE;
+    color: #1E40AF;
+}
+
+/* ── Brand row ───────────────────────────────────────────── */
+.food-item-brand-row {
+    font-size: 11.5px;
+    color: #9CA3AF;
+    margin-bottom: 4px;
+}
+
+/* ── Macro Badges ─────────────────────────────────────── */
+.macro-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 3px;
+    font-size: 11.5px;
+    font-weight: 600;
+    padding: 2px 8px;
+    border-radius: 20px;
+    white-space: nowrap;
+}
+
+.macro-badge.cal     { background: #FEF3C7; color: #92400E; }
+.macro-badge.carb    { background: #FEF9C3; color: #854D0E; }
+.macro-badge.sugar   { background: #FCE7F3; color: #9D174D; }
+.macro-badge.fiber   { background: #DCFCE7; color: #166534; }
+.macro-badge.serving { background: #F3F4F6; color: #6B7280; font-weight: 400; }
+
+/* ── Nutrition Badge (selected food) ─────────────────── */
+.nutrition-badge {
+    background: linear-gradient(135deg, #F0FDF4, #ECFDF5);
+    border: 1.5px solid #A7F3D0;
+    border-radius: 8px;
+    padding: 10px 14px;
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+    animation: fadeInDown 0.2s ease;
+}
+
+@keyframes fadeInDown {
+    from { opacity: 0; transform: translateY(-4px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+.nutrition-badge-name {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 13px;
+    font-weight: 600;
+    color: #065F46;
+}
+
+.nutrition-clear-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: #9CA3AF;
+    font-size: 13px;
+    line-height: 1;
+    padding: 2px 4px;
+    border-radius: 4px;
+    transition: color 0.15s, background 0.15s;
+}
+
+.nutrition-clear-btn:hover {
+    color: #EF4444;
+    background: #FEF2F2;
+}
+
+.nutrition-macros {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+}
+
+@media (max-width: 640px) {
+    .food-search-dropdown {
+        position: fixed;
+        left: 12px;
+        right: 12px;
+        width: auto;
+    }
+}
+
+/* ── Today's Glucose Log panel ──────────────────────────── */
+.today-glucose-log {
+    background: linear-gradient(135deg, #F8FAFF 0%, #EEF2FF 100%);
+    border: 1.5px solid #C7D2FE;
+    border-radius: 12px;
+    padding: 16px 18px;
+    animation: fadeInDown 0.25s ease;
+}
+
+.today-glucose-title {
+    font-size: 13.5px;
+    font-weight: 700;
+    color: #3730A3;
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.today-glucose-count {
+    background: #6366F1;
+    color: #fff;
+    font-size: 11px;
+    font-weight: 700;
+    padding: 3px 10px;
+    border-radius: 20px;
+}
+
+.today-glucose-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 8px;
+}
+
+@media (max-width: 640px) {
+    .today-glucose-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+.today-glucose-slot {
+    border-radius: 8px;
+    padding: 9px 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    transition: transform 0.15s;
+}
+
+.today-glucose-slot:hover {
+    transform: translateY(-1px);
+}
+
+.slot-done {
+    background: #fff;
+    border: 1.5px solid #E0E7FF;
+    box-shadow: 0 1px 4px rgba(99,102,241,0.07);
+}
+
+.slot-empty {
+    background: rgba(255,255,255,0.45);
+    border: 1.5px dashed #C7D2FE;
+}
+
+.slot-label {
+    font-size: 10.5px;
+    color: #6B7280;
+    font-weight: 500;
+    line-height: 1.3;
+}
+
+.slot-val {
+    font-size: 13px;
+    font-weight: 700;
+    line-height: 1;
+}
+
+.val-ok   { color: #10B981; }
+.val-warn { color: #F59E0B; }
+.val-high { color: #EF4444; }
+.val-none { color: #D1D5DB; }

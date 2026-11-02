@@ -1,0 +1,102 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // ─────────────────────────────────────────────────────────────────
+    // Helper: check whether the requesting user is an admin.
+    // Relies ONLY on the Firestore document role field — not email pattern.
+    // Set role: 'admin' directly in the Firestore console or via Cloud Functions.
+    // ─────────────────────────────────────────────────────────────────
+    function isAdmin() {
+      return request.auth != null &&
+        exists(/databases/$(database)/documents/users/$(request.auth.uid)) &&
+        get(/databases/$(database)/documents/users/$(request.auth.uid)).data.role == 'admin';
+    }
+
+    function isSignedIn() {
+      return request.auth != null;
+    }
+
+    function isOwner(uid) {
+      return isSignedIn() && request.auth.uid == uid;
+    }
+
+    // ─────────────────────────────────────────────────────────────────
+    // /users/{userId}
+    //   • Owner can read/write their own document
+    //   • Admin can read all user documents
+    //   • On create: any authenticated user may create their own doc
+    // ─────────────────────────────────────────────────────────────────
+    match /users/{userId} {
+      allow read:   if isOwner(userId) || isAdmin();
+      allow create: if isOwner(userId);
+      allow update: if isOwner(userId) || isAdmin();
+      allow delete: if isAdmin();
+
+      // ── /users/{userId}/checkins/{dateId} ──────────────────────────
+      match /checkins/{dateId} {
+        allow read, write: if isOwner(userId);
+        allow read:        if isAdmin();
+      }
+
+      // ── /users/{userId}/dailyLogs/{logId} ─────────────────────────
+      match /dailyLogs/{logId} {
+        allow read, write: if isOwner(userId);
+        allow read:        if isAdmin();
+      }
+    }
+
+    // ─────────────────────────────────────────────────────────────────
+    // /achievements/{docId}
+    //   • All authenticated users may read (for the Achievements page)
+    //   • Only admins may write
+    // ─────────────────────────────────────────────────────────────────
+    match /achievements/{docId} {
+      allow read:  if isSignedIn();
+      allow write: if isAdmin();
+    }
+
+    // ─────────────────────────────────────────────────────────────────
+    // /rules/{docId} — admin-configured health threshold settings
+    //   • Only admins may read/write
+    // ─────────────────────────────────────────────────────────────────
+    match /rules/{docId} {
+      allow read, write: if isAdmin();
+    }
+
+    // ─────────────────────────────────────────────────────────────────
+    // /settings/{docId} — system-wide settings
+    //   • Only admins may read/write
+    // ─────────────────────────────────────────────────────────────────
+    match /settings/{docId} {
+      allow read, write: if isAdmin();
+    }
+
+    // ─────────────────────────────────────────────────────────────────
+    // /logs/{logId} — legacy alias (kept for safety)
+    // ─────────────────────────────────────────────────────────────────
+    match /logs/{logId} {
+      allow read, write: if isAdmin();
+    }
+
+    // ─────────────────────────────────────────────────────────────────
+    // /systemLogs/{logId} — real-time system audit logs (AdminLogs page)
+    //   • Any signed-in user may CREATE (so logEvent.js can write)
+    //   • Only admins may READ or DELETE
+    // ─────────────────────────────────────────────────────────────────
+    match /systemLogs/{logId} {
+      allow create: if isSignedIn();
+      allow read, delete: if isAdmin();
+    }
+
+    // ─────────────────────────────────────────────────────────────────
+    // /adminSettings/{docId} — admin-configured rules/thresholds
+    //   • Any signed-in user may READ (needed by useDiabetesRisk.js)
+    //   • Only admins may WRITE
+    // ─────────────────────────────────────────────────────────────────
+    match /adminSettings/{docId} {
+      allow read:  if isSignedIn();
+      allow write: if isAdmin();
+    }
+  }
+}

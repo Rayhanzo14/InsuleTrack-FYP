@@ -1,0 +1,362 @@
+/* ============================================================
+   REPORT PAGE
+   ============================================================ */
+
+/* Reuse rec-field-group / rec-input / rec-hint / rec-select from record.css */
+@import './record.css';
+
+/* ── Two-column layout ───────────────────────────────────── */
+.report-layout {
+    display: grid;
+    grid-template-columns: 420px 1fr;
+    gap: 24px;
+    align-items: start;
+}
+
+@media (max-width: 920px) {
+    .report-layout {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* ── Form Card ───────────────────────────────────────────── */
+.report-form-card {
+    background: #fff;
+    border-radius: 14px;
+    padding: 26px 26px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+
+.report-card-header {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding-bottom: 18px;
+    border-bottom: 1px solid #F3F4F6;
+}
+
+.report-card-icon {
+    width: 44px;
+    height: 44px;
+    background: #EFF6FF;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 22px;
+    flex-shrink: 0;
+}
+
+.report-card-title {
+    font-size: 15px;
+    font-weight: 700;
+    color: #1a1a2e;
+}
+
+.report-card-sub {
+    font-size: 12px;
+    color: #9CA3AF;
+    margin-top: 2px;
+}
+
+.report-date-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+}
+
+/* ── What's included ─────────────────────────────────────── */
+.report-includes {
+    background: #F9FAFB;
+    border-radius: 10px;
+    padding: 14px 16px;
+    border: 1.5px solid #F3F4F6;
+}
+
+.report-includes-title {
+    font-size: 13px;
+    font-weight: 600;
+    color: #374151;
+    margin-bottom: 10px;
+}
+
+.report-includes-list {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+}
+
+.report-includes-list li {
+    font-size: 13px;
+    color: #6B7280;
+    padding-left: 18px;
+    position: relative;
+    line-height: 1.4;
+}
+
+.report-includes-list li::before {
+    content: '•';
+    position: absolute;
+    left: 0;
+    color: #10B981;
+    font-weight: 700;
+}
+
+/* ── Placeholder ─────────────────────────────────────────── */
+.report-placeholder {
+    background: #fff;
+    border-radius: 14px;
+    padding: 60px 30px;
+    text-align: center;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    border: 2px dashed #E5E7EB;
+}
+
+.report-placeholder-icon {
+    font-size: 52px;
+    margin-bottom: 16px;
+}
+
+.report-placeholder-title {
+    font-size: 16px;
+    font-weight: 700;
+    color: #374151;
+}
+
+.report-placeholder-sub {
+    font-size: 13px;
+    color: #9CA3AF;
+    margin-top: 8px;
+    line-height: 1.5;
+}
+
+/* ── Report Preview ──────────────────────────────────────── */
+.report-preview-card {
+    background: #fff;
+    border-radius: 14px;
+    padding: 28px 28px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    border: 1.5px solid #E5E7EB;
+    animation: fadeIn 0.4s ease;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(8px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.report-preview-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    padding-bottom: 18px;
+    border-bottom: 1.5px solid #F3F4F6;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.report-preview-logo {
+    font-size: 16px;
+    font-weight: 700;
+    color: #1a1a2e;
+}
+
+.report-preview-meta {
+    text-align: right;
+}
+
+.report-preview-type {
+    font-size: 13px;
+    font-weight: 600;
+    color: #10B981;
+}
+
+.report-preview-range {
+    font-size: 12px;
+    color: #6B7280;
+    margin-top: 2px;
+}
+
+.report-preview-user {
+    font-size: 12px;
+    color: #9CA3AF;
+    margin-top: 2px;
+}
+
+.report-section-title {
+    font-size: 14px;
+    font-weight: 700;
+    color: #1a1a2e;
+    margin-bottom: 12px;
+}
+
+/* ── Preview Stats ───────────────────────────────────────── */
+.report-stats-row {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+}
+
+@media (max-width: 680px) {
+    .report-stats-row {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+.report-stat {
+    background: #F9FAFB;
+    border-radius: 10px;
+    padding: 12px 10px;
+    text-align: center;
+}
+
+.report-stat-icon {
+    font-size: 22px;
+    display: block;
+    margin-bottom: 6px;
+}
+
+.report-stat-val {
+    font-size: 15px;
+    font-weight: 700;
+    color: #1a1a2e;
+}
+
+.report-stat-label {
+    font-size: 11px;
+    color: #9CA3AF;
+    margin-top: 3px;
+}
+
+/* ── Blood Sugar Preview ─────────────────────────────────── */
+.report-bs-row {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+}
+
+.report-bs-item {
+    background: #F9FAFB;
+    border-radius: 10px;
+    padding: 12px 14px;
+}
+
+.report-bs-val {
+    font-size: 20px;
+    font-weight: 700;
+    color: #1a1a2e;
+    line-height: 1;
+}
+
+.report-bs-val span {
+    font-size: 12px;
+    color: #6B7280;
+    font-weight: 400;
+}
+
+.report-bs-label {
+    font-size: 11px;
+    color: #9CA3AF;
+    margin: 4px 0;
+}
+
+/* ── Recommendations list ────────────────────────────────── */
+.report-rec-list {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.report-rec-list li {
+    font-size: 13px;
+    color: #374151;
+    padding: 9px 12px 9px 36px;
+    background: #F9FAFB;
+    border-radius: 8px;
+    position: relative;
+    line-height: 1.4;
+}
+
+.report-rec-list li::before {
+    content: '✅';
+    position: absolute;
+    left: 10px;
+    font-size: 13px;
+}
+
+/* ── Streak banner ───────────────────────────────────────── */
+.report-streak-banner {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: #FFFBEB;
+    border: 1.5px solid #FDE68A;
+    border-radius: 10px;
+    padding: 10px 14px;
+    font-size: 13px;
+    color: #92400E;
+    margin-bottom: 18px;
+    font-weight: 500;
+}
+
+.report-streak-badge {
+    margin-left: auto;
+    background: #F59E0B;
+    color: #fff;
+    font-size: 11px;
+    font-weight: 700;
+    padding: 3px 10px;
+    border-radius: 999px;
+}
+
+/* ── Blood sugar status badge ────────────────────────────── */
+.bs-badge {
+    display: inline-block;
+    font-size: 10.5px;
+    font-weight: 600;
+    padding: 2px 8px;
+    border-radius: 999px;
+    margin-top: 4px;
+}
+
+.bs-badge.normal {
+    background: #D1FAE5;
+    color: #065F46;
+}
+
+.bs-badge.high {
+    background: #FEE2E2;
+    color: #991B1B;
+}
+
+.bs-badge.low {
+    background: #DBEAFE;
+    color: #1E40AF;
+}
+
+/* ── Print styles ────────────────────────────────────────── */
+@media print {
+    .db-layout > *:not(.db-main) { display: none !important; }
+    .db-main { margin: 0 !important; padding: 0 !important; }
+    .db-header, .db-page-title, .db-page-sub,
+    .report-form-card, .report-placeholder,
+    .btn-primary { display: none !important; }
+    .report-preview-col { width: 100% !important; }
+    .report-preview-card { box-shadow: none !important; border: none !important; }
+    body { background: #fff !important; }
+}
